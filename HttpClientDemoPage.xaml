@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:HttpClientDemo" x:Class="HttpClientDemo.HttpClientDemoPage">
+	<!--	<Label Text="Welcome to Xamarin Forms!" VerticalOptions="Center" HorizontalOptions="Center" />-->
+	<StackLayout Orientation="Vertical">
+		<StackLayout Padding="10,60,0,0">
+			<Label Text="Add a ToDo item" TextColor="Green">
+			</Label>
+		</StackLayout>
+		<StackLayout Orientation="Horizontal" Padding="10,0,10,0">
+			<Entry x:Name="txtTodoItem" HorizontalOptions="Start" VerticalOptions="StartAndExpand" HeightRequest="30" WidthRequest="200">
+			</Entry>
+			<DatePicker x:Name="dpDueDate" HorizontalOptions="CenterAndExpand" HeightRequest="30" VerticalOptions="StartAndExpand">
+			</DatePicker>
+			<Button HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="30" Text="Add" Clicked="AddButton_Clicked">
+			</Button>
+		</StackLayout>
+		<StackLayout Orientation="Vertical" Padding="10,5,10,0">
+			<Label Text="Pending Items" TextColor="Red">
+			</Label>
+			<ListView x:Name="todoList">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.ContextActions>
+								<MenuItem Clicked="OnDone" CommandParameter="{Binding .}" Text="Done" />
+								<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+							</ViewCell.ContextActions>
+							<StackLayout Padding="10,10" Orientation="Horizontal">
+								<Label Text="{ Binding Description }" HorizontalOptions="StartAndExpand">
+								</Label>
+								<Label Text="Done" TextColor="Green" HorizontalOptions="Center" IsVisible="{Binding isDone}">
+								</Label>
+								<Label Text="{ Binding DueDate }" HorizontalOptions="End">
+								</Label>
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</StackLayout>
+</ContentPage>
