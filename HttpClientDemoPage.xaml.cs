@@ -32,7 +32,6 @@ namespace HttpClientDemo
 			var mi = ((MenuItem)sender);
 			TodoItem itemToUpdate = (TodoItem)mi.CommandParameter;
 			itemToUpdate.isDone = true;
-			//var itemList = todoList.ItemsSource as List<TodoItem>;
 			int itemIndex = items.IndexOf(itemToUpdate);
 			await dataService.UpdateTodoItemAsync(itemIndex,itemToUpdate);
 			RefreshData();
@@ -42,7 +41,6 @@ namespace HttpClientDemo
 		{
 			var mi = ((MenuItem)sender);
 			TodoItem itemToDelete = (TodoItem)mi.CommandParameter;
-			//var itemList = todoList.ItemsSource as List<TodoItem>;
 			int itemIndex = items.IndexOf(itemToDelete);
 			await dataService.DeleteTodoItemAsync(itemIndex);
 			RefreshData();
